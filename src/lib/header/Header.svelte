@@ -5,6 +5,7 @@
 	import DropdownProfile from './DropdownProfile.svelte';
 	import MenuIcon from './MenuIcon.svelte';
 	import CloseIcon from './CloseIcon.svelte';
+	import NavListVertical from './NavListVertical.svelte';
 
 	let isShow = false;
 	function isToggle() {
@@ -63,36 +64,7 @@
 			<!-- Mobile menu, show/hide based on menu state. -->
 			<div class="md:hidden" id="mobile-menu">
 				<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-					<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-					<a
-						href="#"
-						class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-						aria-current="page">Dashboard</a
-					>
-
-					<a
-						href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-						>Team</a
-					>
-
-					<a
-						href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-						>Projects</a
-					>
-
-					<a
-						href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-						>Calendar</a
-					>
-
-					<a
-						href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-						>Reports</a
-					>
+					<NavListVertical />
 				</div>
 				<div class="pt-4 pb-3 border-t border-gray-700">
 					<div class="flex items-center px-5">
@@ -113,41 +85,13 @@
 						>
 							<span class="sr-only">View notifications</span>
 							<!-- Heroicon name: outline/bell -->
-							<svg
-								class="h-6 w-6"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-								/>
-							</svg>
+							<Notification />
 						</button>
 					</div>
 					<div class="mt-3 px-2 space-y-1">
-						<a
-							href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-							>Your Profile</a
-						>
-
-						<a
-							href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-							>Settings</a
-						>
-
-						<a
-							href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-							>Sign out</a
-						>
+						{#each ['Your Profile', 'Settings', 'Sign out'] as item}
+							<a href="#/" class="*menuItem">{item}</a>
+						{/each}
 					</div>
 				</div>
 			</div>
